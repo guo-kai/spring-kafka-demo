@@ -6,6 +6,7 @@ tar zxvf kafka_2.11-0.10.1.0.tgz
 #修改配置文件(server.properties)
 
 vim kafka_2.11-0.10.0.1/config/server.properties
+
 broker.id=0 (集群唯一)
 
 listeners=PLAINTEXT://192.168.88.75:9092
