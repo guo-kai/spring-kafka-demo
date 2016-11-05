@@ -4,11 +4,16 @@ wget https://www.apache.org/dyn/closer.cgi?path=/kafka/0.10.1.0/kafka_2.11-0.10.
 #解压文件
 tar zxvf kafka_2.11-0.10.1.0.tgz
 #修改配置文件(server.properties)
+
 vim kafka_2.11-0.10.0.1/config/server.properties
 broker.id=0 (集群唯一)
+
 listeners=PLAINTEXT://192.168.88.75:9092
+
 port=9092 
+
 zookeeper服务器地址可指向到多台, 隔开
+
 zookeeper.connect=192.168.88.74:2181
 
 #kafka启动 (如需启动多个broker 请复制server,properties 修改配置)
@@ -24,7 +29,9 @@ event
 
 #删除topic
 bin/kafka-topics.sh --delete --zookeeper 192.168.88.74:2181 --topic mhb-test
+
 Topic mhb-test is marked for deletion.
+
 Note: This will have no impact if delete.topic.enable is not set to true.
 
 #创建topic
@@ -44,10 +51,15 @@ cd kafka-manager/
 sbt dist
 #找到编译后的zip包（unzip kafka-manager-1.3.2.1.zip ）
 cd target/universal/
+
 unzip kafka-manager-1.3.2.1.zip 
-$修改配置文件
+
+修改配置文件
+
 vim kafka-manager-1.3.2.1/conf/application.conf 
+
 修改zookeeper指向
+
 kafka-manager.zkhosts="192.168.88.74:2181”
 #移动kafka-manager到usr/local目录下
 sudo mv kafka-manager-1.3.2.1 /usr/local/kafka-manager
